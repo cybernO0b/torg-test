@@ -1,29 +1,30 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import Counter from "../TimeButtons"
-import counter from "../../store/counter"
+import timebuttons from "../../store/timebuttons"
+import timebuttons1 from "../../store/timebuttons1"
 import { getPadTime } from "../getPadTime";
 import './index.css';
+import {observer} from "mobx-react-lite"
 
 
 
 
-const Timeleft = () => {
-    const [timeleft, setTimeleft] = useState(2 * 60)
-    const [isCounting, setIsCounting] = useState(false)
+const Timeleft = observer(() => {
+    const [timeleft, setTimeleft] = useState(timebuttons1.btnbet1)
+    // const [isCounting, setIsCounting] = useState(false)
     
-
+    
     const minutes = getPadTime(Math.floor(timeleft / 60))
     const seconds = getPadTime(timeleft - minutes * 60)
 /////////////////////////////////////////////////////////////////////////////////
     useEffect(() => {
         const interval = setInterval(() => {
-           counter.count &&  setTimeleft((timeleft) => timeleft >=1 ? timeleft - 1 : 0)
+            timebuttons.btnbet &&  setTimeleft((timeleft) => timeleft >=1 ? timeleft - 1 : 0)
         }, 1000)
         return () => {
             clearInterval(interval)
         }
-    }, [counter.count]) 
+    }, []) 
 ///////////////////////////////////////////////////////////////////////////////////чтобы счетчик не уходил в минус
 
     // const handleStart = () => {
@@ -47,7 +48,7 @@ const Timeleft = () => {
                 <span>:</span>
                 <span>{seconds}</span>
             </div>
-            <Counter/>
+            
             {/* <div className="buttons">
                 <button onClick={handleStart}>start</button>
                 <button onClick={handleStop}>stop</button>
@@ -57,5 +58,5 @@ const Timeleft = () => {
         </>
     )
 }
-
+)
 export default Timeleft;

@@ -1,23 +1,24 @@
 import React from "react";
-import counter from "../../store/counter";
+import timebuttons from "../../store/timebuttons";
+import timebuttons1 from "../../store/timebuttons1";
 import {observer} from "mobx-react-lite"
 
 import "./index.css"
 
 
-const Counter = observer(() => {
+const TimeButtons = observer(() => {
     
 
     return (
         <div className="timeleft">
             
             <div className="buttons">
-                <button onClick={() => counter.handleStart()}>start</button>
-                <button onClick={() => counter.handleStop()}>stop</button>
-                <button >reset</button>
+                <button onClick={() => timebuttons.handleStart()}>Запуск</button>
+                <button onClick={() => timebuttons.handleStop()}>Остановка</button>
+                <button onClick={() => timebuttons1.handleReset()}>Ставка</button>
             </div>
         </div>
     )
 })
 
-export default Counter;
+export default TimeButtons;
