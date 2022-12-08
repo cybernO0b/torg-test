@@ -1,0 +1,30 @@
+.container {
+    padding: 0;
+    margin: 0;
+    column-count: 6;
+    column-width: 16vw;
+
+    
+    
+    
+    height: 600px;
+    width: 100vw;
+    border: 3px solid #000
+    
+    
+}
+
+.box1 {
+    padding: 0;
+    margin: 0;
+    border: 3px solid #000;
+    
+    height: 550px;
+}
+
+.box2 {
+    
+    border: 3px solid #000;
+    
+    height: 550px;
+}
