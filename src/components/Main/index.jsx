@@ -1,18 +1,16 @@
 import React from "react";
 import TimeButtons from "../TimeButtons";
 import Timeleft from "../Timeleft";
-import testbuyers from "../../store/testbuyers";
-import {observer} from "mobx-react-lite"
 import "./index.css"
-import TestBuyers from "../TestBuyers/TestBuyers";
 
 
-const Main = observer(() => {
+
+const Main = () => {
     
 
     return (
         <>
-        <main>
+        <div className="main">
             <Timeleft/>
             <div className="container">
                 
@@ -23,7 +21,7 @@ const Main = observer(() => {
 
                 </div>
                 <div className="box2">
-                <TestBuyers/>
+               
                 </div>
                 <div className="box2">
 
@@ -38,10 +36,10 @@ const Main = observer(() => {
                 
             </div>
             <TimeButtons/>
-        </main>
+        </div>
 
         </>
     )
 }
-)
+
 export default Main;

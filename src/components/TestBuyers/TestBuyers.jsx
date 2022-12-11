@@ -1,25 +1,24 @@
-import React from "react";
-
-import testbuyers from "../../store/testbuyers";
-import {observer} from "mobx-react-lite"
+// import React from "react";
 
 
 
-const TestBuyers = observer(() => {
+
+
+// const TestBuyers =() => {
     
 
-    return (
-        <>
-        <div>
-            <div>
-               {testbuyers.companies.map(t =>
-                <div className="company" key={t.id}>
-                    {t.name}
-                </div>)} 
-            </div>
-        </div>
-        </>
-    )
-}
-)
-export default TestBuyers;
+//     return (
+//         <>
+//         <div>
+//             <div>
+//                {testbuyers.companies.map(t =>
+//                 <div className="company" key={t.id}>
+//                     {t.name}
+//                 </div>)} 
+//             </div>
+//         </div>
+//         </>
+//     )
+// }
+
+// export default TestBuyers;

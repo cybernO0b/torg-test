@@ -1,32 +1,48 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import timebuttons from "../../store/timebuttons"
-import timebuttons1 from "../../store/timebuttons1"
-import { getPadTime } from "../getPadTime";
+import { useEffect, useState } from "react";
 import './index.css';
-import {observer} from "mobx-react-lite"
+import { useDispatch, useSelector } from "react-redux";
+import { addCashAction } from "../../store/cashReducer";
+    
+const Timeleft = () => {
+
+    
+    const getPadTime = (time) => time.toString().padStart(2, "0");
+   
+        const dispatch = useDispatch()
+        const cash = useSelector(state => state.cash.cash)
+        const deystvo = useSelector(state => state.deystvo.deystvo)
+        
 
 
+        const addCash = (cash) => {
+            
+            dispatch(addCashAction(cash))
+        }
 
-
-const Timeleft = observer(() => {
-    const [timeleft, setTimeleft] = useState(timebuttons1.btnbet1)
+        const getCash = () => {
+            dispatch({type: "GET_CASH", payload: 60 * 2})
+        }
+        
+            
+   
+    // const [tleft, setTimeleft] = useState(60 * 2)
     // const [isCounting, setIsCounting] = useState(false)
     
     
-    const minutes = getPadTime(Math.floor(timeleft / 60))
-    const seconds = getPadTime(timeleft - minutes * 60)
+    const minutes = getPadTime(Math.floor(cash / 60))
+    const seconds = getPadTime(cash - minutes * 60)
 /////////////////////////////////////////////////////////////////////////////////
-    useEffect(() => {
-        const interval = setInterval(() => {
-            timebuttons.btnbet &&  setTimeleft((timeleft) => timeleft >=1 ? timeleft - 1 : 0)
-        }, 1000)
-        return () => {
-            clearInterval(interval)
-        }
-    }, []) 
+useEffect(() => {
+    const interval = setInterval(() => {
+        addCash((cash >= 1 ? cash -1 : 0))
+    }, 1000) 
+    return () => {
+        clearInterval(interval)
+    }
+}, [cash]) 
 ///////////////////////////////////////////////////////////////////////////////////чтобы счетчик не уходил в минус
-
+    console.log(cash)
     // const handleStart = () => {
     //     setIsCounting(true)
     // }
@@ -34,9 +50,11 @@ const Timeleft = observer(() => {
     //     setIsCounting(false)
     // }
     // const handleReset = () => {
-    //     setIsCounting(false)
-    //     setTimeleft(60 * 2)}
+    //      setIsCounting(false)
+    //      setTimeleft(60 * 2)}
 
+    
+    
     return (
     <>
         <div>
@@ -48,7 +66,9 @@ const Timeleft = observer(() => {
                 <span>:</span>
                 <span>{seconds}</span>
             </div>
-            
+            <button onClick={() => getCash()}>getCash</button>
+                
+                <button onClick={() => addCash()}>addCash</button>
             {/* <div className="buttons">
                 <button onClick={handleStart}>start</button>
                 <button onClick={handleStop}>stop</button>
@@ -58,5 +78,5 @@ const Timeleft = observer(() => {
         </>
     )
 }
-)
+
 export default Timeleft;
