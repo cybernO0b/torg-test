@@ -2,25 +2,28 @@ import React from "react";
 import "./index.css"
 import { useDispatch, useSelector } from "react-redux";
 import { addCustomerAction } from "../../store/customerReducer";
-import { addCashAction } from "../../store/cashReducer";
+
 
 
 const TimeButtons = () => {
     const dispatch = useDispatch()
     const cash = useSelector(state => state.cash.cash)
-    const deystvo = useSelector(state => state.deystvo.deystvo)
+   
     const customers = useSelector(state => state.customers.customers)
+    const flag = useSelector(state => state.flag.flag)
 
-
-    const thisReducer = () => {
-        dispatch({})
-    }
 
      const addCash = () => {
             
             dispatch({type: "ADD_CASH", payload: 60 * 2})
         }
+        const flagCashTrue = () => {
+            dispatch({type: "THIS_TRUE", payload: true})
+        }
 
+        const flagCashFalse = () => {
+            dispatch({type: "THIS_FALSE", payload: false})
+        }
     const getCash = () => {
         dispatch({type: "GET_CASH", payload: 60 * 2})
     }
@@ -49,6 +52,9 @@ const TimeButtons = () => {
                 <button onClick={() => getCash()}>getCash</button>
                 
                 <button onClick={() => addCash()}>addCash</button>
+                <button onClick={() => flagCashTrue()}>Запуск</button>
+                <button onClick={() => flagCashFalse()}>Стоп</button>
+                
 
                 <button onClick={() => addCustomer(prompt())}>Добавитьь</button>
 

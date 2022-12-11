@@ -10,6 +10,7 @@ export const cashReducer = (state = defaultState, action) => {
             return {...state, cash: action.payload}
         case "GET_CASH":
             return {...state, cash: 60*2}
+        
             
         default:
             return state

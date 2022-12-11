@@ -7,7 +7,7 @@ const rootReducer = combineReducers(
     {
         cash: cashReducer,
         customers: customerReducer,
-        deystvo: trueReducer,
+        flag: trueReducer,
     }
 )
 
